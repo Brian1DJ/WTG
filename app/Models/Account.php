@@ -9,6 +9,7 @@ class Account extends Authenticatable
 {
     use HasFactory;
 
+    protected $primaryKey = 'id';
     protected $fillable = [
         'firstname',
         'lastname',
@@ -19,6 +20,11 @@ class Account extends Authenticatable
     protected $hidden = [
         'password',
     ];
+
+    public function events()
+    {
+        return $this->hasMany(Event::class);
+    }
 }
 
 
